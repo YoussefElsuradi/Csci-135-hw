@@ -1,0 +1,151 @@
+Board.hpp
+
+class Board
+{
+    int max;
+    int target;
+    int numRows;
+    int numColumns;
+    int **panel;
+
+public:
+    Board();
+    Board(int m);
+    Board(int m,int n);
+    void print();
+    ~Board();
+
+};
+
+
+Board.cpp
+
+#include "Board.hpp"
+#include <iostream>
+using namespace std;
+
+//default constructor
+Board::Board()
+{
+    max = 0;
+    target = 32;
+    //setting both rows and columns to 3
+    numRows = 3;
+    numColumns = 3;
+
+    //dynamically allocating the 2D array
+    panel = new int* [numRows];
+    for(int i=0;i<numRows;i++)
+    {
+        panel[i] = new int[numColumns];
+    }
+
+}
+
+Board::Board(int m)
+{
+    max = 0;
+    target = 32;
+     //if m greater than 0 then assign it as rows and columns
+    if(m>=1)
+    {
+        numRows = m;
+        numColumns = m;
+    }
+    //if not assign 3 to both
+    else
+    {
+        numRows = 3;
+        numColumns = 3;
+    }
+
+    //dynamically allocating the 2D array
+    panel = new int* [numRows];
+
+    for(int i=0;i<numRows;i++)
+    {
+        panel[i] = new int[numColumns];
+    }
+}
+
+Board::Board(int m, int n)
+{
+   max = 0;
+   target = 32;
+
+    //if both m and n are greater than 0 then assign them as rows and columns
+   if(m>=1&&n>=1)
+   {
+       numRows = m;
+       numColumns = n;
+   }
+   //if not assign 3 to both
+   else
+   {
+        numRows = 3;
+        numColumns = 3;
+   }
+
+   //dynamically allocating the 2D array
+   panel = new int* [numRows];
+   for(int i=0;i<numRows;i++)
+   {
+        panel[i] = new int[numColumns];
+   }
+}
+
+//destructor
+Board::~Board()
+{
+    //freeing memory
+    for(int i=0;i<numRows;i++)
+    {
+        delete []panel[i];
+    }
+    delete []panel;
+    //handling dangling pointer error by changing the pointer value to NULL
+    panel = NULL;
+}
+
+//printing the board
+void Board::print()
+{
+    for(int i=0;i<=numRows;i++)
+    {
+        cout<<"\n+";
+        for(int j=0;j<numColumns;j++)
+        {
+            cout<<"---+";
+        }
+        cout<<"\n";
+        if(i!=numRows)
+        {
+            for(int k=0;k<=numColumns;k++)
+            {
+                cout<<"|   ";
+            }
+
+        }
+    }
+}
+
+
+
+TestBoard.cpp
+
+#include <iostream>
+#include "Board.hpp"
+
+using namespace std;
+
+int main()
+{
+    Board game;
+    game.print();
+
+    Board game2(4);
+    game2.print();
+
+    Board game3(3,4);
+    game3.print();
+}

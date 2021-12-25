@@ -9,9 +9,9 @@
         ""
       ],
       "stopAtEntry": false,
-      "cwd": "c:/Users/Youssef/Csci-135-hw/hw",
+      "cwd": "c:/Users/Youssef/Csci-135-hw/1024",
       "environment": [],
-      "program": "c:/Users/Youssef/Csci-135-hw/hw/build/Debug/outDebug",
+      "program": "c:/Users/Youssef/Csci-135-hw/1024/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
